@@ -5,13 +5,16 @@
     <style></style>
     <template>
         <div id="mainBody">
-            <student-details></student-details>
-           <student-details person-name="Narayana" sports-quota></student-details>
+            <student-details id="bala" person-name="Bala" person-id="12" ></student-details>
+           <student-details person-name="Narayana" person-id="13" sports-quota></student-details>
         </div>
     </template>   
     <script>
         Polymer({
             is : "main-doc",
+            ready : function(){
+                this.$.bala.printConsole();
+            }
         });
     </script>
 </dom-module>
