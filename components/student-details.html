@@ -11,37 +11,29 @@
         </div>
     </template>
     <script>
-        // detailsBehaviour = {
-        //     properties : {
-        //         personName : {
-        //             type : String,
-        //             value : "Bala"
-        //         },
-        //         personId : {
-        //             type: Number,
-        //             value : "10"
-        //         }
-        //     }
-        // };
-        Polymer({
-            is: "student-details",
-            //behaviors : [detailsBehaviour],
+        detailsBehaviour = {
             properties : {
                 personName : {
                     type : String,
                     value : "Bala"
                 },
                 personId : {
-                    type: Number,
+                    type: String,
                     value : "10"
-                },
+                }
+            }
+        };
+        Polymer({
+            is: "student-details",
+            behaviors : [detailsBehaviour],
+            properties : {
                 sportsQuota : {
                     type: Boolean,
                     value: false
                 }
             },
             printConsole : function() {
-                console.log(this.personName);
+                console.log("Name of the student: " + this.personName + '\n' + "Id of the student: " +this.personId);
             },
             _computeSportsQuotaCheck : function(sportsQuota) {
                 if(sportsQuota)

@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="teacher-details">
+    <style>
+    </style>
+    <template>
+        <div id="teacherBody">
+            <h1>Teacher details</h1>
+            <p>Name : {{personName}}</p>     
+            <p>ID : {{personId}}</p>
+            <p>Department : {{department}}</p>
+        </div>
+    </template>
+
+    <script>
+      // element registration
+      Polymer({
+        is: "teacher-details",
+        behaviors : [detailsBehaviour],
+        // add properties and methods on the element's prototype
+
+        properties: {
+          // declare properties for the element's public API
+            department : {
+                type : String,
+                value : 'Didn\'t give the info'
+            }
+          }
+      });
+    </script>
+
+  </dom-module>
