@@ -1,0 +1,57 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="student-details">
+    <style></style>
+    <template >
+        <div id="studentBody">
+            <h1>Student details</h1>
+            <p>Name: {{personName}}</p>
+            <p>ID: {{personId}}</p>
+           <!--<p>{{personName}} [[_computeSportsQuotaCheck(sportsQuota)]] sports Quota</p>--> 
+        </div>
+    </template>
+    <script>
+        // detailsBehaviour = {
+        //     properties : {
+        //         personName : {
+        //             type : String,
+        //             value : "Bala"
+        //         },
+        //         personId : {
+        //             type: Number,
+        //             value : "10"
+        //         }
+        //     }
+        // };
+        Polymer({
+            is: "student-details",
+            //behaviors : [detailsBehaviour],
+            properties : {
+                personName : {
+                    type : String,
+                    value : "Bala"
+                },
+                personId : {
+                    type: Number,
+                    value : "10"
+                },
+                sportsQuota : {
+                    type: Boolean,
+                    value: false
+                }
+            },
+            printConsole : ()=>{
+                console.log(this.name);
+            },
+            _computeSportsQuotaCheck : function(sportsQuota) {
+                if(sportsQuota)
+                    return "entered in";
+                else
+                    return "didnt enter in";
+            },
+            //for debug          
+            ready : function(){
+            }
+        });
+    </script>
+</dom-module>
