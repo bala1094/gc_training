@@ -1,16 +1,23 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<dom-module id="student-details">
-    <style></style>
+<dom-module id="student-details"> <!--parent - this is the root element -->
+    <style>
+        p {
+           color: blue;
+        }
+        /* div { background-color: red;} */
+    </style>
     <template >
-        <div id="studentBody">
+        <div id="studentBody"> <!--child of this.root // access it using childNode[child number] syntax-->
             <h1>Student details</h1>
             <p>Name: {{personName}}</p>
             <p>ID: {{personId}}</p>
-           <p>{{personName}} [[_computeSportsQuotaCheck(sportsQuota)]] sports Quota</p>
+            <!-- <button>Click Me to show your lucky number</button> -->
+            <!-- <p>{{personName}} [[_computeSportsQuotaCheck(sportsQuota)]] sports Quota</p> -->
         </div>
     </template>
     <script>
+
         detailsBehaviour = {
             properties : {
                 personName : {
@@ -43,6 +50,13 @@
             },
             //for debug          
             ready : function(){
+                if(this.sportsQuota){
+                    let paraCreation = document.createElement('p')
+                    paraCreation.textContent = `${this.personName} entered in sports Quota`;
+                    Polymer.dom(this.root).childNodes[1].appendChild(paraCreation);
+                }
+                
+                //console.log(Polymer.dom(this.root).childNodes[1]);
             }
         });
     </script>

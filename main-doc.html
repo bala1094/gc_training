@@ -3,7 +3,11 @@
 <link rel="import" href="components/teacher-details.html">
 
 <dom-module id="main-doc">
-    <style></style>
+    <style>
+        /* #bala div > p{--student-details-color: chartreuse;} */
+        :host ::content > #mainBody > #xxx  p { color: chartreuse;} 
+                  
+    </style>
     <template>
         <div id="mainBody">
             <teacher-details id="xxx" person-name="xxx" person-id="T5" department="EEE"></teacher-details>
@@ -13,6 +17,7 @@
         </div>
     </template>   
     <script>
+
         Polymer({
             is : "main-doc",
             ready : function(){
