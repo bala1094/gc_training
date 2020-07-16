@@ -5,15 +5,23 @@
         p {
            color: blue;
         }
-        /* div { background-color: red;} */
+        #studentBody,#luckyNumber {
+        display: inline-block;
+        width: 35%;
+      }
+      #luckyNumber {
+        background-color: darkgray;
+        height: 20%;
+      }
     </style>
     <template >
         <div id="studentBody"> <!--child of this.root // access it using childNode[child number] syntax-->
             <h1>Student details</h1>
             <p>Name: {{personName}}</p>
             <p>ID: {{personId}}</p>
-            <!-- <button>Click Me to show your lucky number</button> -->
-            <!-- <p>{{personName}} [[_computeSportsQuotaCheck(sportsQuota)]] sports Quota</p> -->
+            <button on-tap="fireButtonTap">Click Me to show your lucky number</button>
+        </div>
+        <div id="luckyNumber">Here comes your lucky number
         </div>
     </template>
     <script>
@@ -48,12 +56,18 @@
                 else
                     return "didnt enter in";
             },
+            fireButtonTap : function() {
+                this.fire("buttonTap")
+            },
             //for debug          
             ready : function(){
                 if(this.sportsQuota){
+                    let childNodeLength = Polymer.dom(this.root).childNodes[1].childNodes.length;
+                    //assuminig button node will be always last
+                    let beforeButtonNode = Polymer.dom(this.root).childNodes[1].childNodes[childNodeLength-2];
                     let paraCreation = document.createElement('p')
                     paraCreation.textContent = `${this.personName} entered in sports Quota`;
-                    Polymer.dom(this.root).childNodes[1].appendChild(paraCreation);
+                    Polymer.dom(this.root).childNodes[1].insertBefore(paraCreation,beforeButtonNode);
                 }
                 
                 //console.log(Polymer.dom(this.root).childNodes[1]);

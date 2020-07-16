@@ -6,7 +6,7 @@
     <style>
         /* #bala div > p{--student-details-color: chartreuse;} */
         :host ::content > #mainBody > #xxx  p { color: chartreuse;} 
-                  
+        
     </style>
     <template>
         <div id="mainBody">
@@ -20,9 +20,30 @@
 
         Polymer({
             is : "main-doc",
-            ready : function(){
+            
+            paraAndRandomGenerator : function(id){
+                    // button removal after getting the input
+                    let numOfButtonSibling = document.getElementById(id).childNodes[1].childNodes.length;
+                    console.log(numOfButtonSibling);
+                    let buttonElement = document.getElementById(id).childNodes[1].childNodes[numOfButtonSibling - 2];
+                    console.log(buttonElement);
+                    document.getElementById(id).childNodes[1].removeChild(buttonElement)
+
+                    let paraCreation = document.createElement('p');
+                    paraCreation.textContent = `${Math.floor((Math.random() * 100) + 1)} is your lucky number`;
+                    document.getElementById(id).childNodes[3].innerHTML = paraCreation.textContent;
+                },
+            ready : function(){ //known thing:  one every click, number will be generated
                 this.$.bala.printConsole();
+                document.getElementById('xxx').addEventListener('buttonTap', this.paraAndRandomGenerator.bind(this,'xxx'));
+                document.getElementById('yyy').addEventListener('buttonTap', this.paraAndRandomGenerator.bind(this,'yyy'));
+                document.getElementById('bala').addEventListener('buttonTap', this.paraAndRandomGenerator.bind(this,'bala'));
+                document.getElementById('narayana').addEventListener('buttonTap', this.paraAndRandomGenerator.bind(this,'narayana'));
             }
         });
+
+
     </script>
 </dom-module>
+
+

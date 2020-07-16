@@ -2,13 +2,13 @@
 
 <dom-module id="teacher-details">
     <style>
-      /* #teacherBody,#luckyNumber {
+      #teacherBody,#luckyNumber {
         display: inline-block;
         width: 35%;
       }
       #luckyNumber {
         border: solid 1px black;
-      } */
+      }
     </style>
     <template>
         <div id="teacherBody">
@@ -16,11 +16,11 @@
             <p>Name : {{personName}}</p>     
             <p>ID : {{personId}}</p>
             <p>Department : {{department}}</p>
-            <!-- <button>Click Me to show your lucky number</button> -->
+            <button on-tap="fireButtonTap">Click Me to show your lucky number</button>
         </div>
-        <!-- <div id="luckyNumber">
-          <p>afs</p>
-        </div> -->
+        <div id="luckyNumber">Here comes your lucky number
+        </div>
+        </div>
     </template>
 
     <script>
@@ -36,7 +36,10 @@
                 type : String,
                 value : 'Didn\'t give the info'
             }
-          }
+          },
+          fireButtonTap : function() {
+                this.fire("buttonTap")
+            },
       });
     </script>
 
